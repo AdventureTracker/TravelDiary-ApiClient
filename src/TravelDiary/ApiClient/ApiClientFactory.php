@@ -13,29 +13,25 @@ class ApiClientFactory
 	/**
 	 * @var string
 	 */
-	protected $baseUri;
+	protected $baseUri = null;
 
 	/**
 	 * @var string
 	 */
-	protected $clientSecret;
+	protected $clientSecret = null;
 
 	/**
 	 * @var string
 	 */
-	protected $clientToken;
+	protected $clientToken = null;
 
 	/**
 	 * ApiClientFactory constructor.
 	 * @param string $baseUri
-	 * @param string $clientSecret
-	 * @param string $clientToken
 	 */
-	public function __construct($baseUri, $clientSecret, $clientToken)
+	public function __construct($baseUri)
 	{
 		$this->baseUri = $baseUri;
-		$this->clientSecret = $clientSecret;
-		$this->clientToken = $clientToken;
 	}
 
 	/**
@@ -63,16 +59,21 @@ class ApiClientFactory
 	}
 
 	public function create() {
-		$client = new \GuzzleHttp\Client([
+
+		$config = [
 			'base_url' 			=> $this->baseUri,
 			'headers' 			=> [
-				'X-TravelDiary-Token' 		=> $this->clientToken,
-				'X-TravelDiary-Device' 		=> $this->clientSecret,
 				'Content-Type' 				=> 'application/json'
 			]
-		]);
+		];
 
-		return $client;
+		if ($this->clientSecret)
+			$config['headers']['X-TravelDiary-Device'] = $this->clientSecret;
+
+		if ($this->clientToken)
+			$config['headers']['X-TravelDiary-Token'] = $this->clientToken;
+
+		return new \GuzzleHttp\Client($config);
 	}
 
 
