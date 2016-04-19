@@ -63,6 +63,16 @@ class ApiClientFactory
 	}
 
 	public function create() {
+		$client = new \GuzzleHttp\Client([
+			'base_url' 			=> $this->baseUri,
+			'headers' 			=> [
+				'X-TravelDiary-Token' 		=> $this->clientToken,
+				'X-TravelDiary-Device' 		=> $this->clientSecret,
+				'Content-Type' 				=> 'application/json'
+			]
+		]);
+
+		return $client;
 	}
 
 
