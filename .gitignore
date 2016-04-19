@@ -2,5 +2,7 @@
 ### JetBrains template
 /.idea/
 
+/*.iml
+
 ### Composer template
 /vendor/
