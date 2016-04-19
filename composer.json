@@ -1,5 +1,5 @@
 {
-  "name": "TravelDiary/ApiClient",
+  "name": "travel-diary/api-client",
   "description": "TravelDiary API client for PHP projects",
   "require": {
 	"guzzlehttp/guzzle": "~6.0"
