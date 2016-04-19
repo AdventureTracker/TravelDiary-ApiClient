@@ -1,5 +1,7 @@
 <?php
 
+namespace TravelDiary\ApiClient;
+
 /**
  * Created by PhpStorm.
  * User: jdubec
