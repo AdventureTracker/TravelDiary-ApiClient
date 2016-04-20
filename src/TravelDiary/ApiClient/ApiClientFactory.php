@@ -1,6 +1,7 @@
 <?php
 
 namespace TravelDiary\ApiClient;
+use GuzzleHttp\Client;
 
 /**
  * Created by PhpStorm.
@@ -11,6 +12,9 @@ namespace TravelDiary\ApiClient;
 
 class ApiClientFactory
 {
+
+	const DEVICE_HEADER = 'X-TravelDiary-Device';
+	const TOKEN_HEADER = 'X-TravelDiary-Token';
 
 	/**
 	 * @var string
@@ -70,12 +74,12 @@ class ApiClientFactory
 		];
 
 		if ($this->clientSecret)
-			$config['headers']['X-TravelDiary-Device'] = $this->clientSecret;
+			$config['headers'][self::DEVICE_HEADER] = $this->clientSecret;
 
 		if ($this->clientToken)
-			$config['headers']['X-TravelDiary-Token'] = $this->clientToken;
+			$config['headers'][self::TOKEN_HEADER] = $this->clientToken;
 
-		return new \GuzzleHttp\Client($config);
+		return new Client($config);
 	}
 
 
