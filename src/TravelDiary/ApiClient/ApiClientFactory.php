@@ -67,7 +67,7 @@ class ApiClientFactory
 	public function create() {
 
 		$config = [
-			'base_url' 			=> $this->baseUri,
+			'base_uri' 			=> $this->baseUri,
 			'headers' 			=> [
 				'Content-Type' 				=> 'application/json'
 			]
