@@ -70,7 +70,8 @@ class ApiClientFactory
 			'base_uri' 			=> $this->baseUri,
 			'headers' 			=> [
 				'Content-Type' 				=> 'application/json'
-			]
+			],
+			'verify' 			=> false
 		];
 
 		if ($this->clientSecret)
